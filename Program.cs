@@ -1,8 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using PricedCodes2Project.DataAccess.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<AppDbContext>
+   (o => o.UseSqlServer(connectionString: "PricedCodes2Db"));
 
 var app = builder.Build();
 
