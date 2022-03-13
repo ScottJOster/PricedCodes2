@@ -7,8 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>
-   (o => o.UseSqlServer(connectionString: "PricedCodes2Db"));
-
+   (o =>
+   {
+       o.UseSqlServer(connectionString: "Data Source = (localdb)\\PricedCodes2Db; Initial Catalog = master; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False));");
+   });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

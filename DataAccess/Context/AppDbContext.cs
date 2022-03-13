@@ -7,10 +7,19 @@ namespace PricedCodes2Project.DataAccess.Context
 {
     public class AppDbContext : DbContext
     {
+       
+        public DbSet<Property> Property{ get; set; }
+        public DbSet<PostCodePosition> PostcodePosition { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
+            
         }
-        public DbSet<Property> Properties { get; set; }
-        public DbSet<PostCodePosition> Positions { get; set; }
-    }
-}
+
+        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            _ = optionsBuilder.UseSqlServer("Server=(localdb)\\PricedCodes2Db;Initial Catalog=PricedCodes2Db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        }
+    } 
+ }
+
