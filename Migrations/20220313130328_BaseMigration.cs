@@ -14,7 +14,7 @@ namespace PricedCodes2Project.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Postcode = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: false),
+                    Postcode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Latitude = table.Column<decimal>(type: "decimal(10,7)", nullable: false),
                     Longitude = table.Column<decimal>(type: "decimal(10,7)", nullable: false)
                 },
@@ -29,7 +29,7 @@ namespace PricedCodes2Project.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Postcode = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: false),
+                    Postcode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     SoldPrice = table.Column<int>(type: "int", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },

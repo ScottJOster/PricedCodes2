@@ -11,7 +11,7 @@ using PricedCodes2Project.DataAccess.Context;
 namespace PricedCodes2Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220312235423_BaseMigration")]
+    [Migration("20220313130328_BaseMigration")]
     partial class BaseMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,8 +42,8 @@ namespace PricedCodes2Project.Migrations
 
                     b.Property<string>("PostCode")
                         .IsRequired()
-                        .HasMaxLength(9)
-                        .HasColumnType("nvarchar(9)")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("Postcode");
 
                     b.HasKey("Id");
@@ -62,8 +62,8 @@ namespace PricedCodes2Project.Migrations
 
                     b.Property<string>("PostCode")
                         .IsRequired()
-                        .HasMaxLength(9)
-                        .HasColumnType("nvarchar(9)")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("Postcode");
 
                     b.Property<string>("PropertyType")

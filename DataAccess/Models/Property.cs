@@ -13,7 +13,7 @@ namespace PricedCodes2Project.DataAccess.Models
         public int Id { get; set; }
 
         [Column("Postcode")]
-        [StringLength(9)]
+        [StringLength(10)]
         public string PostCode { get; set; }
 
         [Column("SoldPrice")]

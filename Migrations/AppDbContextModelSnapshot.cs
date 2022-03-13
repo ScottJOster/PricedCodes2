@@ -40,8 +40,8 @@ namespace PricedCodes2Project.Migrations
 
                     b.Property<string>("PostCode")
                         .IsRequired()
-                        .HasMaxLength(9)
-                        .HasColumnType("nvarchar(9)")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("Postcode");
 
                     b.HasKey("Id");
@@ -60,8 +60,8 @@ namespace PricedCodes2Project.Migrations
 
                     b.Property<string>("PostCode")
                         .IsRequired()
-                        .HasMaxLength(9)
-                        .HasColumnType("nvarchar(9)")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("Postcode");
 
                     b.Property<string>("PropertyType")
