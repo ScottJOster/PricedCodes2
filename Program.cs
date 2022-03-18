@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using PricedCodes2Project.ApplicationService;
 using PricedCodes2Project.DataAccess.Context;
+using PricedCodes2Project.PostcodePositionService;
+using PricedCodes2Project.PropertyInfoService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,10 @@ builder.Services.AddDbContext<AppDbContext>
    {
        o.UseSqlServer(connectionString: "Data Source = (localdb)\\PricedCodes2Db; Initial Catalog = master; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False));");
    });
+builder.Services.AddScoped<IPostCodePositionService, PostcodePositionService>();
+builder.Services.AddScoped<IPropertyInfoService, PropertyInfoService>();
+builder.Services.AddScoped<IApplicationService, ApplicationService>();        
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -15,11 +15,13 @@ namespace PricedCodes2Project.DataAccess.Context
             
         }
 
-        
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             _ = optionsBuilder.UseSqlServer("Server=(localdb)\\PricedCodes2Db;Initial Catalog=PricedCodes2Db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
+
     } 
  }
 
