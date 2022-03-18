@@ -12,14 +12,13 @@ namespace Project1.Controllers
     [Route("[controller]/[action]")]
     public class PropertyController : ControllerBase
     {
-        private readonly IPostCodePositionService _postCodePositionService;
-        private readonly IPropertyInfoService _propertyInfoService;
+      
         private readonly IApplicationService _applicationService; 
 
-        private static readonly string[] Summaries = new[]
+    /*    private static readonly string[] Summaries = new[]
         {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+    };*/
        // private readonly IPostCodePositionService _postCodePoisitionService;
         private readonly ILogger<PropertyController> _logger;
 
@@ -27,13 +26,10 @@ namespace Project1.Controllers
             IPropertyInfoService propertyInfoService, IApplicationService applicationService)
         {
             _logger = logger;
-            _postCodePositionService = postCodePositionService;
-            _propertyInfoService = propertyInfoService;
             _applicationService = applicationService;
-          
         }
 
-        [HttpGet]
+       /*[HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -44,42 +40,9 @@ namespace Project1.Controllers
             })
            .ToArray();
 
-        }
-
-        [HttpGet]
-        
-    
-       /* public async Task<ActionResult> GetPostCodePosition(string postCode)
-        {
-            var testCall = await _postCodePositionService.GetPositionForPostcodeAsync(new List<string> { postCode });
-           
-            
-            var testData = new List<string> { "test", "test" };
-
-            if (testCall.FirstOrDefault().PostCode != null)
-            {
-
-                var longitude = testCall.FirstOrDefault().Longitude;
-                var latitude = testCall.FirstOrDefault().Latitude;
-
-
-                var positionsInRange = await _postCodePositionService.GetLocalPostcodesForPositionAsync(latitude, longitude);
-
-                var postcodesInRange = new List<string>();
-                foreach (var position in positionsInRange) 
-                {
-                    postcodesInRange.Add(position.PostCode);
-                }
-
-
-                var testCallOnPropertyInfoForPostcodes = await _propertyInfoService.GetPropertyInfoForPostcodesAsync(postcodesInRange);
-
-                return new JsonResult(new {Data = testCallOnPropertyInfoForPostcodes }); 
-            }
-        
-            return new JsonResult (new { Data = testCall }) ;
         }*/
 
+        [HttpGet]
         public async Task<ActionResult> GetAllLocalSoldPricesForPostCode (string postcode) 
         {
             var allLocalSold = await _applicationService.GetAllLocalSoldPropertiesForPostCodeAsync(postcode);

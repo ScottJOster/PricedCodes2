@@ -9,12 +9,12 @@ export class FetchData extends Component {
     }
 
     componentDidMount() {
-        this.populateWeatherData();
+       
       this.populatePostCodePositionData();
 
     }
 
-    static renderForecastsTable(properties) {
+    static renderPropertiesTable(properties) {
         return (
             <table className='table table-striped' aria-labelledby="tabelLabel">
                 <thead>
@@ -42,22 +42,18 @@ export class FetchData extends Component {
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : FetchData.renderForecastsTable(this.state.properties);
+            : FetchData.renderPropertiesTable(this.state.properties);
 
         return (
             <div>
                 <h1 id="tabelLabel" >Sold Properties </h1>
-                <p>This component demonstrates fetching data from the server.</p>
+               
                 {contents}
             </div>
         );
     }
 
-    async populateWeatherData() {
-        const response = await fetch('property/get');
-        const data = await response.json();
-        console.dir(data);
-    }
+  
 
     async populatePostCodePositionData() {
 
@@ -66,9 +62,7 @@ export class FetchData extends Component {
         console.dir(data);
       this.setState({ properties: data, loading: false });
         
-      
-        
-}
+    }
 }
 
 
