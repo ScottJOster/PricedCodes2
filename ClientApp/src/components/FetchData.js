@@ -56,10 +56,11 @@ export class FetchData extends Component {
   
 
     async populatePostCodePositionData() {
+        
 
-        const pRes = await fetch(`property/GetAllLocalSoldPricesForPostCode?postcode=m9 6rp` );
+        const pRes = await fetch(`property/GetAllLocalSoldPricesForPostCode?postcode=${this.props.fullPostCode}` );
         const { data } = await pRes.json();
-        console.dir(data);
+        console.dir(this.props)
       this.setState({ properties: data, loading: false });
         
     }
