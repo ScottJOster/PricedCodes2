@@ -49,7 +49,7 @@ namespace PricedCodes2Project.PostcodePositionService
             var postcodePositions = await _context.PostcodePosition.Where(x => postCodes.Contains(x.PostCode)).ToListAsync(); 
 
             var postCodePositionsDto = new List<PostCodePositionDto>();
-            if (postcodePositions.FirstOrDefault().PostCode != null)
+            if (postcodePositions?.FirstOrDefault().PostCode != null)
             {
                 foreach (var position in postcodePositions)
                 {

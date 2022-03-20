@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
+import { PropertyMap } from './PropertyMap'
 
 export class FetchData extends Component {
-    static displayName = FetchData.name;
-
-    constructor(props) {
+   
+ constructor(props) {
         super(props);
         this.state = { properties: [], loading: true };
     }
 
     componentDidMount() {
        
-      this.populatePostCodePositionData();
+      this.populatePropertyData();
 
     }
 
@@ -19,11 +19,9 @@ export class FetchData extends Component {
             <table className='table table-striped' aria-labelledby="tabelLabel">
                 <thead>
                     <tr> 
-                        
                         <th>PostCode</th>
                         <th>SoldPrice </th>
                         <th>PropertyType</th>
-                        
                     </tr>
                 </thead>
                 <tbody>
@@ -49,21 +47,18 @@ export class FetchData extends Component {
                 <h1 id="tabelLabel" >Sold Properties </h1>
                
                 {contents}
+                <PropertyMap properties={this.state.properties} />
             </div>
         );
     }
 
-  
+  async populatePropertyData() {
 
-    async populatePostCodePositionData() {
-        
-
-        const pRes = await fetch(`property/GetAllLocalSoldPricesForPostCode?postcode=${this.props.fullPostCode}` );
+        const pRes = await fetch(`property/GetAllLocalSoldPricesForPostCode?postcode=${this.props.fullPostCode}`);
         const { data } = await pRes.json();
-        console.dir(this.props)
-      this.setState({ properties: data, loading: false });
-        
-    }
+        this.setState({ properties: data, loading: false });
+        return (<PropertyMap properties={this.state.properties} />)
+        }
 }
 
 
