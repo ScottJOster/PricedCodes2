@@ -11,8 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>
    (o =>
-   {
-       o.UseSqlServer(connectionString: "Data Source = (localdb)\\PricedCodes2Db; Initial Catalog = master; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False));");
+   {//conn string removed
+       o.UseSqlServer(connectionString: );
    });
 builder.Services.AddScoped<IPostCodePositionService, PostcodePositionService>();
 builder.Services.AddScoped<IPropertyInfoService, PropertyInfoService>();
