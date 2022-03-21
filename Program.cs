@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>
    (o =>
-   {//conn string removed
+   {//strings removed
        o.UseSqlServer(connectionString: );
    });
 builder.Services.AddScoped<IPostCodePositionService, PostcodePositionService>();
