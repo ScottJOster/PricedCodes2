@@ -9,8 +9,7 @@ export function PropertyMap({ properties }) {
     const color = `hsl(${hue % 360}deg 39% 70%)`
     const [propertyState, setPropertyState] = useState([])
     
-    
-    useEffect(() => {
+     useEffect(() => {
 
         setPropertyState(properties)
        
@@ -26,9 +25,7 @@ export function PropertyMap({ properties }) {
             defaultCenter={[53.4808, -2.2426]}
                 defaultZoom={11}>
 
-
-
-             {propertyState.map(x =>
+            {propertyState.map(x =>
                  <Marker
                      key={x.id}
                         width={100}
@@ -37,8 +34,7 @@ export function PropertyMap({ properties }) {
                         onClick={() => setHue(hue + 20)}
                     />)}
 
-               
-                </Map >
+                  </Map >
                 </div>
     )
 }

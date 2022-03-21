@@ -7,14 +7,11 @@ using PricedCodes2Project.ApplicationService;
 
 namespace Project1.Controllers
 {
-    
     [ApiController]
     [Route("[controller]/[action]")]
     public class PropertyController : ControllerBase
     {
-      
         private readonly IApplicationService _applicationService; 
-
         private readonly ILogger<PropertyController> _logger;
 
         public PropertyController(ILogger<PropertyController> logger, IPostCodePositionService postCodePositionService,

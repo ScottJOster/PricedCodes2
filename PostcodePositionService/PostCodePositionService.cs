@@ -7,18 +7,15 @@ namespace PricedCodes2Project.PostcodePositionService
 {
     public class PostcodePositionService : IPostCodePositionService
     {
-       
         private readonly AppDbContext _context;
 
         public PostcodePositionService (AppDbContext context)
         {
             _context = context;
         }
-
-        public async Task<IEnumerable<PostCodePositionDto>> GetLocalPostcodesForPositionAsync(decimal? latitude, decimal? longitude)
+    public async Task<IEnumerable<PostCodePositionDto>> GetLocalPostcodesForPositionAsync(decimal? latitude, decimal? longitude)
         {
-            //one degree of lat roughly 69 miles
-            //base on 0.005 degree 
+            
             // obviousy possible to make this more dynamic by passing mile range and using seperate methods for calcs to keep solid
             var minLat = latitude - 0.005m;
             var maxLat = latitude + 0.005m;

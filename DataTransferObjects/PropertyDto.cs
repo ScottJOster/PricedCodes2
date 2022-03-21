@@ -27,13 +27,11 @@ namespace PricedCodes2Project.DataTransferObjects
             propertyDto.Latitude = latitude;
             propertyDto.Longitude = longitude;
             return propertyDto;
-
         }
-        //dont need below just do same in app service
+       
         internal static PropertyDto CreateDtoWithErrorMessage( string errorMessage)
         {
             return new PropertyDto { ErrorMessage = errorMessage };
-           
         }
     }
 }

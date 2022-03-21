@@ -21,8 +21,6 @@ namespace PricedCodes2Project.DataAccess.Models
 
             [Column("Longitude", TypeName = "decimal(10,7)")]
             public decimal? Longitude { get; set; }
-
-
         }
     }
 

@@ -9,9 +9,7 @@ export class FetchData extends Component {
     }
 
     componentDidMount() {
-       
-      this.populatePropertyData();
-
+        this.populatePropertyData();
     }
 
     static renderPropertiesTable(properties) {
@@ -56,9 +54,7 @@ export class FetchData extends Component {
 
         const pRes = await fetch(`property/GetAllLocalSoldPricesForPostCode?postcode=${this.props.fullPostCode}`);
         const { data } = await pRes.json();
-
         this.setState({ properties: data, loading: false });
-
         return (<PropertyMap properties={this.state.properties} />)
         }
 }

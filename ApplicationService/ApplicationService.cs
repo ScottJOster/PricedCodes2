@@ -10,7 +10,7 @@ namespace PricedCodes2Project.ApplicationService
         private readonly IPropertyInfoService _propertyInfoService;
 
         private readonly IPostCodePositionService _postCodePositionService;
-
+       
         public ApplicationService(IPropertyInfoService propertyInfoService, IPostCodePositionService postCodePositionService)
         {
             _propertyInfoService = propertyInfoService;
@@ -22,16 +22,14 @@ namespace PricedCodes2Project.ApplicationService
             var positionForPostcode = await _postCodePositionService.GetPositionForPostcodeAsync(new List<string> { postCode });
 
             if (positionForPostcode.First().Latitude == null) { return new List<PropertyDto> { PropertyDto.CreateDtoWithErrorMessage("Unable To Find Position For Postcode Entered") }; };
-
                
+               var postCodePositionsInRange = await _postCodePositionService.GetLocalPostcodesForPositionAsync(positionForPostcode.First().Latitude, positionForPostcode.First().Longitude);
 
-                var postCodePositionsInRange = await _postCodePositionService.GetLocalPostcodesForPositionAsync(positionForPostcode.First().Latitude, positionForPostcode.First().Longitude);
-
-                if (postCodePositionsInRange.First().Latitude == null) { return new List<PropertyDto> { PropertyDto.CreateDtoWithErrorMessage("Unable To Find Any Postcodes Within Range") }; };
+            if (postCodePositionsInRange.First().Latitude == null) { return new List<PropertyDto> { PropertyDto.CreateDtoWithErrorMessage("Unable To Find Any Postcodes Within Range") }; };
                   
-                    var postCodesList = postCodePositionsInRange.Select(x => x.PostCode).ToList();
-                    var localSoldProperties = await _propertyInfoService.GetPropertyInfoForPostcodesAsync(postCodesList);
-                    // change all null checks to !list.any ???
+               var postCodesList = postCodePositionsInRange.Select(x => x.PostCode).ToList();
+               var localSoldProperties = await _propertyInfoService.GetPropertyInfoForPostcodesAsync(postCodesList);
+                  
             if (localSoldProperties.Count() < 1) { return new List<PropertyDto> { PropertyDto.CreateDtoWithErrorMessage("No Sales in Range") };};
 
                     var allPropertyInfo = new List<PropertyDto>();
