@@ -10,17 +10,17 @@ namespace PricedCodes2Project.DataAccess.Models
             [Key]
             [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
             [Required]
-            public int Id { get; set; }
+            public int? Id { get; set; }
 
             [Column("Postcode")]
             [StringLength(10)]
             public string PostCode { get; set; }
 
             [Column("Latitude", TypeName = "decimal(10,7)")]
-            public decimal Latitude { get; set; }
+            public decimal? Latitude { get; set; }
 
             [Column("Longitude", TypeName = "decimal(10,7)")]
-            public decimal Longitude { get; set; }
+            public decimal? Longitude { get; set; }
 
 
         }

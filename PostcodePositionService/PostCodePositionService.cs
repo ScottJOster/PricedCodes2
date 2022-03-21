@@ -15,7 +15,7 @@ namespace PricedCodes2Project.PostcodePositionService
             _context = context;
         }
 
-        public async Task<IEnumerable<PostCodePositionDto>> GetLocalPostcodesForPositionAsync(decimal latitude, decimal longitude)
+        public async Task<IEnumerable<PostCodePositionDto>> GetLocalPostcodesForPositionAsync(decimal? latitude, decimal? longitude)
         {
             //one degree of lat roughly 69 miles
             //base on 0.005 degree 
@@ -49,7 +49,6 @@ namespace PricedCodes2Project.PostcodePositionService
             var postcodePositions = await _context.PostcodePosition.Where(x => postCodes.Contains(x.PostCode)).ToListAsync(); 
 
             var postCodePositionsDto = new List<PostCodePositionDto>();
-            if (postcodePositions?.FirstOrDefault().PostCode != null)
             {
                 foreach (var position in postcodePositions)
                 {
@@ -58,7 +57,7 @@ namespace PricedCodes2Project.PostcodePositionService
 
                 return postCodePositionsDto;
             }
-            else throw new Exception("No poistion available for postcode provided");
+             throw new Exception("No poistion available for postcode provided");
         }
     }
 }

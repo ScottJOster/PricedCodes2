@@ -31,15 +31,11 @@ export function Home() {
         });
         console.dir(state.fullPostCode);
         
-       
-
-    }
+       }
 
 
     if (!state.isSubmitted) {
-    
-
-    return (
+     return (
 
         <div>
             <h1> Priced Codes </h1>
@@ -49,10 +45,7 @@ export function Home() {
                 <input placeholder={state.postCodeEnd} maxLength={4} onChange={handleChange} type="text" name="postCodeEnd" />
                 <input type="submit" name="submit" />
             </form>
-
-
-
-        </div>
+       </div>
     );
 }
 
@@ -65,10 +58,6 @@ export function Home() {
             <input type="submit" name="submit" />
         </form>
         <FetchData fullPostCode={state.fullPostCode} />
-       
-
-
-
-    </div>) 
+           </div>) 
   
 }

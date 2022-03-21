@@ -21,14 +21,13 @@ namespace PricedCodes2Project.ApplicationService
         {
             var positionForPostcode = await _postCodePositionService.GetPositionForPostcodeAsync(new List<string> { postCode });
 
-            if (positionForPostcode.FirstOrDefault() == null) { return new List<PropertyDto> { PropertyDto.CreateDtoWithErrorMessage("Unable To Find Position For Postcode Entered") }; };
+            if (positionForPostcode.First().Latitude == null) { return new List<PropertyDto> { PropertyDto.CreateDtoWithErrorMessage("Unable To Find Position For Postcode Entered") }; };
 
-                decimal latitude = positionForPostcode.FirstOrDefault().Latitude;
-                decimal longitude = positionForPostcode.FirstOrDefault().Longitude;
+               
 
-                var postCodePositionsInRange = await _postCodePositionService.GetLocalPostcodesForPositionAsync(latitude, longitude);
+                var postCodePositionsInRange = await _postCodePositionService.GetLocalPostcodesForPositionAsync(positionForPostcode.First().Latitude, positionForPostcode.First().Longitude);
 
-                if (postCodePositionsInRange?.FirstOrDefault().Latitude == null) { return new List<PropertyDto> { PropertyDto.CreateDtoWithErrorMessage("Unable To Find Any Postcodes Within Range") }; };
+                if (postCodePositionsInRange.First().Latitude == null) { return new List<PropertyDto> { PropertyDto.CreateDtoWithErrorMessage("Unable To Find Any Postcodes Within Range") }; };
                   
                     var postCodesList = postCodePositionsInRange.Select(x => x.PostCode).ToList();
                     var localSoldProperties = await _propertyInfoService.GetPropertyInfoForPostcodesAsync(postCodesList);

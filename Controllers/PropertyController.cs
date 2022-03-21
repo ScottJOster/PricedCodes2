@@ -15,11 +15,6 @@ namespace Project1.Controllers
       
         private readonly IApplicationService _applicationService; 
 
-    /*    private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };*/
-       // private readonly IPostCodePositionService _postCodePoisitionService;
         private readonly ILogger<PropertyController> _logger;
 
         public PropertyController(ILogger<PropertyController> logger, IPostCodePositionService postCodePositionService,
@@ -28,19 +23,6 @@ namespace Project1.Controllers
             _logger = logger;
             _applicationService = applicationService;
         }
-
-       /*[HttpGet]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-           .ToArray();
-
-        }*/
 
         [HttpGet]
         public async Task<ActionResult> GetAllLocalSoldPricesForPostCode (string postcode) 

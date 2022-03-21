@@ -22,7 +22,7 @@ namespace PricedCodes2Project.DataTransferObjects
                 PropertyType = property?.PropertyType
             };
         }
-        internal static PropertyDto AddPositionToDto(PropertyDto propertyDto,decimal latitude, decimal longitude)
+        internal static PropertyDto AddPositionToDto(PropertyDto propertyDto,decimal? latitude, decimal? longitude)
         {
             propertyDto.Latitude = latitude;
             propertyDto.Longitude = longitude;
